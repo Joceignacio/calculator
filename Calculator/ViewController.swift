@@ -20,24 +20,34 @@ class ViewController: UIViewController {
     @IBAction func number(sender: AnyObject) {
 
         if operationInProgress == true {
+            
             currentNum = 0
+            
             operationInProgress = false
+        
         }
         
         if isAlreadyDec{
+        
             currentNum = currentNum + Double( sender.tag) / pow(10, Double(exponent))
+            
             exponent += 1
+            
             screen.text = String(currentNum)
+        
         }
         else {
+        
             currentNum = currentNum * 10 + Double( sender.tag)
             
             switch String (currentNum) {
             
             case let word where word.hasSuffix(".0"):
+            
                 screen.text = String(Int(currentNum))
             
             default:
+                
                 screen.text = String(currentNum)
             }
         }
@@ -47,20 +57,27 @@ class ViewController: UIViewController {
  
         
         if operationInProgress == false && isFirst == true {
+         
             switch currentOperation {
+            
             case 111:
+            
                 currentNum = secondNum + currentNum
                 
             case 222:
+                
                 currentNum = secondNum - currentNum
                 
             case 333:
+                
                 currentNum = secondNum * currentNum
             
             case 444:
+                
                 currentNum = secondNum / currentNum
 
-            default: print("default")
+            default:
+                print("default")
                 
             }
         }
@@ -69,11 +86,16 @@ class ViewController: UIViewController {
         secondNum = currentNum
         
         switch String (currentNum) {
+        
         case let word where word.hasSuffix(".0"):
+        
             screen.text = String(Int(currentNum))
+        
         default:
+        
             screen.text = String(currentNum)
         }
+        
         isFirst = true
         
         operationInProgress = true
@@ -85,6 +107,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func clear(sender: AnyObject) {
+        
         isAlreadyDec = false
         
         currentNum = 0
@@ -106,7 +129,7 @@ class ViewController: UIViewController {
         
         if isAlreadyDec == false {
         
-            screen.text = screen.text! + "."
+            //screen.text = screen.text! + "."
             
             isAlreadyDec = true
         }
